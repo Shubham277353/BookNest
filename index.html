@@ -12,22 +12,26 @@
 
     <button type="button" id="newBtn">+ New</button>
 
-    <div class="dialog-container">
-        <dialog id="formDialog">
+    <dialog id="formDialog">
+
+        <div class="dialog-content">
             <form method="dialog" id="dialogForm">
-                <h2>Add a New Book</h2>
-                <label for="title">Title</label>
+                <h2>ADD A NEW BOOK</h2>
+                <label for="title">Title:</label>
                 <input type="text" id="title" required>
-                <label for="authorName">Author</label>
+                <label for="authorName">Author:</label>
                 <input type="text" id="authorName" required>
-                <label for="pages">Pages</label>
+                <label for="pages">Pages:</label>
                 <input type="number" id="pages" required>
                 <button id="readBtn">Read</button>
-                <button id="addBtn" type="submit">Add</button>
+                <div class="button-container">
+                    <button id="addBtn">ADD BOOK</button>
+                </div>
             </form>
             <button type="button" id="closeBtn">X</button>
-        </dialog>
-    </div>
+        </div>
+    </dialog>
+
     <div class="library-container"> </div>
 
 

@@ -5,58 +5,140 @@
   font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+:root {
+  --box-shadow: 0 2px 10px rgb(0, 0, 0, 0.2);
+}
+
 .library-container {
-    padding: 20px;
-    display: flex;
-    gap: 20px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .book-card {
-    min-height: 200px;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 10px;
-    border: 2px solid black;
-    overflow: hidden;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgb(0,0,0,0.1);
+  min-height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  border: 2px solid black;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
 }
 
-.book-card img{
-    width: auto;
-    height: 200px;
+.book-card img {
+  width: auto;
+  height: 200px;
 }
 
-.book-card h2{
-    font-size: 1.2rem;
+.book-card h2 {
+  font-size: 1.2rem;
 }
 
 .book-card p {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
-#newBtn{
-    margin: 10px;
-    padding: 5px;
-    font-size: 1.2rem;
-    color: rgb(255, 255, 255);
-    background-color: rgb(135, 212, 19);
-    border-radius: 10px;
-    cursor: pointer;
+#newBtn {
+  margin: 10px;
+  padding: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  background-color: rgb(135, 212, 19);
+  border-radius: 12px;
+  cursor: pointer;
 }
 
-
-#formDialog{
-    display: flex;
+dialog {
+  margin: auto;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 1px 4px 10px rgb(0, 0, 0, 0.5);
 }
 
-#dialogForm{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: auto;
-    width: 400px;
+dialog::backdrop {
+  background: rgb(0, 0, 0, 0.1);
+}
+
+.dialog-content {
+  display: flex;
+}
+
+#closeBtn {
+  margin: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#dialogForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 450px;
+  width: 300px;
+  padding: 20px;
+}
+
+#dialogForm h2 {
+  margin-left: 12px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+  width: 300px;
+  height: 35px;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  /* border-radius: 8px; */
+  border: none;
+  border-bottom: 0.1px solid;
+}
+input:focus {
+  border-radius: 8px;
+  border: none;
+}
+
+#readBtn {
+  width: 60px;
+  padding: 8px 10px;
+  background-color: red;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 3px rgb(0, 0, 0, 0.2);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addBtn {
+  font-size: 1.1rem;
+  padding: 8px;
+  font-weight: 600;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
 }
