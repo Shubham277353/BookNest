@@ -37,3 +37,26 @@
 .book-card p {
     font-size: 1rem;
 }
+
+#newBtn{
+    margin: 10px;
+    padding: 5px;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    background-color: rgb(135, 212, 19);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+#formDialog{
+    display: flex;
+}
+
+#dialogForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    width: 400px;
+}

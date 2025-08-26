@@ -47,12 +47,24 @@ myLibrary.forEach((book) => {
   pTag2.textContent = `Pages: ${book.pages}`;
   pTag3.textContent = `Read: ${book.isRead}`;
 
-  bookContainer.append(image)
+  bookContainer.append(image);
   bookContainer.append(heading2);
   bookContainer.append(pTag1);
   bookContainer.append(pTag2);
   bookContainer.append(pTag3);
   libraryContainer.append(bookContainer);
+});
+
+const showButton = document.querySelector("#newBtn");
+const dialog = document.querySelector("#formDialog");
+const closeButton = document.querySelector("#closeBtn");
+
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
 });
 
 console.log(myLibrary);
