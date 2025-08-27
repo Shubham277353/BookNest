@@ -23,9 +23,13 @@
                 <input type="text" id="author-name" required>
                 <label for="pages">Pages:</label>
                 <input type="number" id="pages" required>
+                <label for="isRead">Status:</label>
+                <select id="isRead">
+                    <option value="Not Read" selected>Not Read</option>
+                    <option value="Read">Read</option>
+                </select>
                 <label for="img-url">Image URL (optional):</label>
-                <input type="url" id="img-url" required>
-                <button id="readBtn">Not Read</button>
+                <input type="url" id="img-url" >
                 <div class="button-container">
                     <button id="addBtn">ADD BOOK</button>
                 </div>

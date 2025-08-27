@@ -6,17 +6,19 @@
 }
 
 :root {
-  --box-shadow: 0 2px 10px rgb(0, 0, 0, 0.2);
+  --box-shadow: 0 2px 8px rgb(0, 0, 0, 0.4);
 }
 
 .library-container {
   padding: 20px;
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
 }
 
 .book-card {
-  width: 230px;
+  width: 260px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -29,7 +31,8 @@
 }
 
 .book-card img {
-  width: auto;
+  width: 100%;
+
   height: 200px;
 }
 
@@ -54,7 +57,6 @@
   box-shadow: 0 3px 4px rgb(0, 0, 0, 0.3);
   text-align: center;
 }
-
 
 #newBtn {
   margin: 10px;
@@ -128,7 +130,6 @@ input:focus {
   border: none;
 }
 
-
 .button-container {
   display: flex;
   justify-content: center;
@@ -142,4 +143,12 @@ input:focus {
   background-color: green;
   color: white;
   border-radius: 10px;
+}
+
+select {
+  font-size: 1.1rem;
+  padding: 6px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
 }

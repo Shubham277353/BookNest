@@ -1,68 +1,97 @@
 const myLibrary = [];
 
-function Book(title, authorName, pages, imgUrl) {
+function Book(title, authorName, pages, isRead, imgUrl) {
   this.title = title;
   this.authorName = authorName;
   this.pages = pages;
+  this.isRead = isRead || "Not Read";
   this.imgUrl = imgUrl;
 }
 
-function addBookToLibrary(title, authorName, pages, imgUrl) {
-  const book = new Book(title, authorName, pages, imgUrl);
+Book.prototype.toggleRead = function () {
+  this.isRead = this.isRead == "Read" ? "Not Read" : "Read";
+};
+
+function addBookToLibrary(title, authorName, pages, isRead, imgUrl) {
+  const book = new Book(title, authorName, pages, isRead, imgUrl);
   book.id = crypto.randomUUID();
   myLibrary.push(book);
+  displayLibrary();
 }
 
 addBookToLibrary(
   "The Hobbit",
   "Tolkien",
-  295,
+  303,
+  "Not Read",
   "https://img1.od-cdn.com/ImageType-400/0293-1/%7BC9B54C84-0369-49C5-A0B3-98E3353A2129%7DIMG400.JPG"
 );
 
 addBookToLibrary(
   "Atomic Habits",
   "James Clear",
-  320,
+  372,
+  "Not Read",
   "https://m.media-amazon.com/images/I/81F90H7hnML.jpg"
 );
 
-myLibrary.forEach((book) => {
+addBookToLibrary(
+  "Hunger Games",
+  "Suzanne collins",
+  310,
+  "Read",
+  "https://cdn.kobo.com/book-images/d7b259d7-270f-40f4-9fa4-4cf24f912687/1200/1200/False/the-hunger-games-trilogy.jpg"
+);
+addBookToLibrary(
+  "Kite Runner",
+  "Khaled Hosseini",
+  275,
+  "Read",
+  "https://m.media-amazon.com/images/I/81IzbD2IiIL.jpg"
+);
+
+function displayLibrary() {
   let libraryContainer = document.querySelector(".library-container");
-  let bookContainer = document.createElement("div");
-  let heading2 = document.createElement("h2");
-  let pTag1 = document.createElement("p");
-  let pTag2 = document.createElement("p");
-  let image = document.createElement("img");
-  let readButton = document.createElement("btn");
+  libraryContainer.innerHTML = "";
 
-  bookContainer.classList.add("book-card");
-  readButton.id = `readBtn`;
-  heading2.textContent = `${book.title}`;
+  myLibrary.forEach((book) => {
+    let bookContainer = document.createElement("div");
+    let heading2 = document.createElement("h2");
+    let pTag1 = document.createElement("p");
+    let pTag2 = document.createElement("p");
+    let image = document.createElement("img");
+    let readButton = document.createElement("button");
 
-  image.src = book.imgUrl;
-  pTag1.textContent = `Author: ${book.authorName}`;
-  pTag2.textContent = `Pages: ${book.pages}`;
-  readButton.textContent = `Not Read`;
+    bookContainer.classList.add("book-card");
+    readButton.id = `readBtn`;
+    heading2.textContent = `${book.title}`;
 
-  book.isRead = readButton.textContent;
+    image.src = book.imgUrl;
+    pTag1.textContent = `Author: ${book.authorName}`;
+    pTag2.textContent = `Pages: ${book.pages}`;
 
-  readButton.addEventListener("click", () => {
-    readButton.textContent =
-      readButton.textContent === "Not Read" ? "Read" : "Not Read";
-    readButton.style.backgroundColor =
-      readButton.textContent === "Read" ? "Green" : "Red";
+    readButton.textContent = book.isRead;
+
     book.isRead = readButton.textContent;
-    console.log(myLibrary);
-  });
 
-  bookContainer.append(image);
-  bookContainer.append(heading2);
-  bookContainer.append(pTag1);
-  bookContainer.append(pTag2);
-  bookContainer.append(readButton);
-  libraryContainer.append(bookContainer);
-});
+    readButton.style.backgroundColor = book.isRead === "Read" ? "green" : "red";
+
+    readButton.addEventListener("click", () => {
+      book.toggleRead();
+      readButton.textContent = book.isRead;
+      readButton.style.backgroundColor =
+        book.isRead === "Read" ? "green" : "red";
+      console.log(myLibrary);
+    });
+
+    bookContainer.append(image);
+    bookContainer.append(heading2);
+    bookContainer.append(pTag1);
+    bookContainer.append(pTag2);
+    bookContainer.append(readButton);
+    libraryContainer.append(bookContainer);
+  });
+}
 
 const showButton = document.querySelector("#newBtn");
 const dialog = document.querySelector("#formDialog");
@@ -72,20 +101,40 @@ showButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-const title = document.querySelector("#title");
-const authorName = document.querySelector("#author-name");
-const pages = document.querySelector("#pages");
-const image = document.querySelector("#img-url");
+const form = document.querySelector("#dialogForm");
 
-// readButton.addEventListener("click", (e) => {
-//     e.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const titleinput = document.querySelector("#title");
+  const authorinput = document.querySelector("#author-name");
+  const pagesinput = document.querySelector("#pages");
+  const isReadinput = document.querySelector("#isRead");
+  const imageinput = document.querySelector("#img-url");
 
-//     // if(readButton.textContent == "Read")
+  addBookToLibrary(
+    titleinput.value,
+    authorinput.value,
+    pagesinput.value,
+    isReadinput.value,
+    imageinput.value
+  );
 
-// })
+  dialog.close();
+  resetForm(titleinput, authorinput, pagesinput, isReadinput, imageinput);
+});
+
+function resetForm(title, authorName, pages, isRead, image) {
+  title.value = "";
+  authorName.value = "";
+  pages.value = "";
+  image.value = "";
+  isRead.value = "Not Read";
+}
 
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
+
+displayLibrary();
 
 console.log(myLibrary);
