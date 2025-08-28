@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, authorName, pages, isRead, imgUrl) {
   this.title = title;
@@ -65,7 +65,7 @@ function displayLibrary() {
     let removeButton = document.createElement("button");
 
     bookContainer.classList.add("book-card");
-    bookContainer.setAttribute("data-id",book.id);
+    bookContainer.setAttribute("data-id", book.id);
     buttonContainer.classList.add("btn-container");
     readButton.id = `readBtn`;
     removeButton.id = `remove-Btn`;
@@ -78,8 +78,6 @@ function displayLibrary() {
 
     readButton.textContent = book.isRead;
 
-    book.isRead = readButton.textContent;
-
     readButton.style.backgroundColor = book.isRead === "Read" ? "green" : "red";
 
     readButton.addEventListener("click", () => {
@@ -88,6 +86,10 @@ function displayLibrary() {
       readButton.style.backgroundColor =
         book.isRead === "Read" ? "green" : "red";
       console.log(myLibrary);
+    });
+
+    removeButton.addEventListener("click", () => {
+      removeBook(book.id);
     });
 
     bookContainer.append(image);
@@ -101,6 +103,16 @@ function displayLibrary() {
 
     libraryContainer.append(bookContainer);
   });
+}
+
+function removeBook(id) {
+  const index = myLibrary.findIndex((book) => book.id === id);
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
+  }
+
+  const bookCard = document.querySelector(`[data-id = '${id}']`);
+  bookCard.remove();
 }
 
 const showButton = document.querySelector("#newBtn");
@@ -132,7 +144,6 @@ form.addEventListener("submit", (e) => {
   dialog.close();
   form.reset();
 });
-
 
 closeButton.addEventListener("click", () => {
   dialog.close();
