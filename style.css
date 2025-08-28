@@ -9,6 +9,79 @@
   --box-shadow: 0 2px 8px rgb(0, 0, 0, 0.4);
 }
 
+body{
+  background: url(/images/website-background-templates.jpg);
+  background-size: cover;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+}
+
+.navbar{
+  padding: 12px;
+  display: flex;
+  gap: 20px;
+  border: 1px solid black;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 95%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+#search-label{
+  display: flex;
+  gap: 15px;
+}
+
+#search-icon{
+  width: auto;
+  height: 35px;
+
+}
+input {
+  padding: 8px;
+  padding-left: 10px;
+  border-radius: 12px;
+  width: 600px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: rgb(236, 234, 234);
+}
+
+input:focus{
+  border: none;
+}
+
+#brand {
+  font-size: 3rem;
+  color: #2ecc71;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+
+#brand-label{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+
+#newBtn {
+  margin: 10px;
+  padding: 8px 18px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  background-color: rgb(135, 212, 19);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
 .library-container {
   padding: 20px;
   display: flex;
@@ -78,16 +151,6 @@
 
 }
 
-#newBtn {
-  margin: 10px;
-  padding: 8px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: rgb(255, 255, 255);
-  background-color: rgb(135, 212, 19);
-  border-radius: 12px;
-  cursor: pointer;
-}
 
 dialog {
   margin: auto;
@@ -97,7 +160,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgb(0, 0, 0, 0.1);
+  background: rgb(0, 0, 0, 0.3);
 }
 
 .dialog-content {
@@ -136,16 +199,15 @@ label {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input {
+input[type="text"] ,[type="number"],[type="url"] {
   width: 340px;
   height: 35px;
   padding-left: 10px;
   font-size: 1.1rem;
-  /* border-radius: 8px; */
   border: none;
   border-bottom: 0.1px solid;
 }
-input:focus {
+input[type="text"] ,[type="number"],[type="url"]:focus {
   border-radius: 8px;
   border: none;
 }

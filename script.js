@@ -105,6 +105,17 @@ function displayLibrary() {
   });
 }
 
+const searchBar = document.querySelector("#search-bar")
+searchBar.addEventListener("input",(e)=>{
+  const query = e.target.value.toLowerCase();
+
+  const filteredBooks = myLibrary.filter(books => 
+    books.title.toLowerCase().includes(query)||
+    books.authorName.toLowerCase().includes(query)
+  );
+
+});
+
 function removeBook(id) {
   const index = myLibrary.findIndex((book) => book.id === id);
   if (index !== -1) {
@@ -148,6 +159,10 @@ form.addEventListener("submit", (e) => {
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
+
+function search(){
+
+}
 
 displayLibrary();
 
