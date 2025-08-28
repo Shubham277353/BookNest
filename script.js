@@ -50,11 +50,11 @@ addBookToLibrary(
   "https://m.media-amazon.com/images/I/81IzbD2IiIL.jpg"
 );
 
-function displayLibrary() {
+function displayLibrary(books = myLibrary) {
   let libraryContainer = document.querySelector(".library-container");
   libraryContainer.innerHTML = "";
 
-  myLibrary.forEach((book) => {
+  books.forEach((book) => {
     let bookContainer = document.createElement("div");
     let heading2 = document.createElement("h2");
     let pTag1 = document.createElement("p");
@@ -114,6 +114,8 @@ searchBar.addEventListener("input",(e)=>{
     books.authorName.toLowerCase().includes(query)
   );
 
+  displayLibrary(filteredBooks);
+  
 });
 
 function removeBook(id) {
