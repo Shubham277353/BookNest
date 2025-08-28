@@ -115,8 +115,22 @@ searchBar.addEventListener("input",(e)=>{
   );
 
   displayLibrary(filteredBooks);
-  
+
 });
+
+const sortBy = document.querySelector("#sort-by");
+
+sortBy.addEventListener("change", function(){
+  const value = this.value;
+  
+  const sortedBooks = myLibrary.filter(books => 
+    books.isRead.includes(value)
+  );
+
+  displayLibrary(sortedBooks);
+
+})
+
 
 function removeBook(id) {
   const index = myLibrary.findIndex((book) => book.id === id);
