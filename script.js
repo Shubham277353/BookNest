@@ -60,11 +60,17 @@ function displayLibrary() {
     let pTag1 = document.createElement("p");
     let pTag2 = document.createElement("p");
     let image = document.createElement("img");
+    let buttonContainer = document.createElement("div");
     let readButton = document.createElement("button");
+    let removeButton = document.createElement("button");
 
     bookContainer.classList.add("book-card");
+    bookContainer.setAttribute("data-id",book.id);
+    buttonContainer.classList.add("btn-container");
     readButton.id = `readBtn`;
+    removeButton.id = `remove-Btn`;
     heading2.textContent = `${book.title}`;
+    removeButton.textContent = `Remove`;
 
     image.src = book.imgUrl;
     pTag1.textContent = `Author: ${book.authorName}`;
@@ -88,7 +94,11 @@ function displayLibrary() {
     bookContainer.append(heading2);
     bookContainer.append(pTag1);
     bookContainer.append(pTag2);
-    bookContainer.append(readButton);
+    bookContainer.append(buttonContainer);
+
+    buttonContainer.append(readButton);
+    buttonContainer.append(removeButton);
+
     libraryContainer.append(bookContainer);
   });
 }
@@ -120,16 +130,9 @@ form.addEventListener("submit", (e) => {
   );
 
   dialog.close();
-  resetForm(titleinput, authorinput, pagesinput, isReadinput, imageinput);
+  form.reset();
 });
 
-function resetForm(title, authorName, pages, isRead, image) {
-  title.value = "";
-  authorName.value = "";
-  pages.value = "";
-  image.value = "";
-  isRead.value = "Not Read";
-}
 
 closeButton.addEventListener("click", () => {
   dialog.close();
