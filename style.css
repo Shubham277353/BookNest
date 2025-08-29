@@ -10,12 +10,12 @@
 }
 
 body {
-  background: url(/images/website-background-templates.jpg);
+  background: url("./images/website-background-templates.jpg");
   background-size: cover;
 }
 
 body.dark-mode {
-  background: url(images/website-background-templates.jpg);
+  background: url("./images/website-background-templates.jpg");
   background-size: cover;
 }
 
