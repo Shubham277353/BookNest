@@ -79,7 +79,8 @@ function displayLibrary(books = myLibrary) {
     heading2.textContent = `${book.title}`;
     removeButton.textContent = `Remove`;
 
-    image.src = book.imgUrl;
+    image.src = book.imgUrl || "https://via.placeholder.com/150x220?text=No+Cover";
+    image.alt = book.title;
     pTag1.textContent = `Author: ${book.authorName}`;
     pTag2.textContent = `Pages: ${book.pages}`;
 
