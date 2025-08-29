@@ -9,24 +9,25 @@
   --box-shadow: 0 2px 8px rgb(0, 0, 0, 0.4);
 }
 
-body{
+body {
   background: url(/images/website-background-templates.jpg);
   background-size: cover;
 }
 
-body.dark-mode{
+body.dark-mode {
   background: url(/images/dark-theme-background-z9hvyfgov8js4cg6.jpg);
   background-size: cover;
 }
 
-header{
+header {
   display: flex;
   justify-content: center;
 }
 
-.navbar{
+.navbar {
   padding: 12px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   border: 1px solid black;
   margin-top: 30px;
@@ -34,16 +35,16 @@ header{
   width: 95%;
   background-color: rgb(255, 255, 255);
   border-radius: 18px;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-#search-label{
+#search-label {
   display: flex;
   gap: 15px;
 }
 
-#search-icon{
+#search-icon {
   width: auto;
   height: 35px;
   background-color: white;
@@ -53,13 +54,14 @@ input {
   padding: 8px;
   padding-left: 10px;
   border-radius: 12px;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   font-size: 1.2rem;
   border: none;
   background-color: rgb(236, 234, 234);
 }
 
-input:focus{
+input:focus {
   border: none;
 }
 
@@ -69,13 +71,12 @@ input:focus{
   text-shadow: 1px 1px 3px rgb(0, 0, 0);
 }
 
-#brand-label{
+#brand-label {
   display: flex;
   gap: 10px;
   align-items: center;
   font-size: 1.4rem;
 }
-
 
 #newBtn {
   margin: 10px;
@@ -88,17 +89,48 @@ input:focus{
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  #brand {
+    font-size: 2rem; /* smaller logo text */
+  }
 
+  #newBtn {
+    font-size: 1rem;
+    padding: 6px 14px;
+  }
+
+  input {
+    font-size: 1rem;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column; /* stack items */
+    gap: 15px;
+  }
+
+  input {
+    max-width: 100%; /* take full width */
+  }
+
+  #brand {
+    font-size: 1.5rem;
+  }
+}
 
 .library-container {
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  place-content: center;
 }
 
 .book-card {
-  width: 260px;
+  max-width: 300px;
+  width: 100%;
   min-height: 400px;
   display: flex;
   flex-direction: column;
@@ -141,14 +173,14 @@ input:focus{
   text-align: center;
 }
 
-.btn-container{
+.btn-container {
   display: flex;
   gap: 20px;
   margin-top: 8px;
 }
 
-#remove-Btn{
-    width: 100px;
+#remove-Btn {
+  width: 100px;
   padding: 8px 10px;
   background-color: red;
   color: white;
@@ -159,9 +191,7 @@ input:focus{
   cursor: pointer;
   box-shadow: 0 3px 4px rgb(0, 0, 0, 0.3);
   text-align: center;
-
 }
-
 
 dialog {
   margin: auto;
@@ -210,7 +240,9 @@ label {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input[type="text"] ,[type="number"],[type="url"] {
+input[type="text"],
+[type="number"],
+[type="url"] {
   width: 340px;
   height: 35px;
   padding-left: 10px;
@@ -218,7 +250,9 @@ input[type="text"] ,[type="number"],[type="url"] {
   border: none;
   border-bottom: 0.1px solid;
 }
-input[type="text"] ,[type="number"],[type="url"]:focus {
+input[type="text"],
+[type="number"],
+[type="url"]:focus {
   border-radius: 8px;
   border: none;
 }

@@ -49,6 +49,13 @@ addBookToLibrary(
   "Read",
   "https://m.media-amazon.com/images/I/81IzbD2IiIL.jpg"
 );
+addBookToLibrary(
+  "1984",
+  "George Orwell",
+  328,
+  "Read",
+  "https://covers.openlibrary.org/b/id/7222246-L.jpg"
+);
 
 function displayLibrary(books = myLibrary) {
   let libraryContainer = document.querySelector(".library-container");
