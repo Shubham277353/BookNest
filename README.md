@@ -18,7 +18,7 @@ A simple library web app where you can add, search, and manage your books. Built
 
 
 ## 🚀 Demo
-👉 Live Demo (https://shubham277353.github.io/BookNest/)
+👉 Live Demo (https://book-nest-navy.vercel.app/)
 
 
 ## 🛠️ Tech Stack
