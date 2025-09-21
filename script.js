@@ -1,17 +1,25 @@
 let myLibrary = [];
 
-function Book(title, authorName, pages, isRead, imgUrl) {
-  this.title = title;
-  this.authorName = authorName;
-  this.pages = pages;
-  this.isRead = isRead || "Not Read";
-  this.imgUrl = imgUrl;
+class Book {
+  constructor(title, authorName, pages, isRead, imgUrl) {
+    this.title = title;
+    this.authorName = authorName;
+    this.pages = pages;
+    this.isRead = isRead || "Not Read";
+    this.imgUrl = imgUrl;
+  }
+
+  toggleRead = function () {
+    this.isRead = this.isRead == "Read" ? "Not Read" : "Read";
+  }
 }
 
-Book.prototype.toggleRead = function () {
-  this.isRead = this.isRead == "Read" ? "Not Read" : "Read";
-};
 
+class Library{
+  constructor(){
+    this.books = [];
+  }
+}
 function addBookToLibrary(title, authorName, pages, isRead, imgUrl) {
   const book = new Book(title, authorName, pages, isRead, imgUrl);
   book.id = crypto.randomUUID();
@@ -58,7 +66,7 @@ addBookToLibrary(
 );
 
 function displayLibrary(books = myLibrary) {
-  let libraryContainer = document.querySelector(".library-container");
+  const libraryContainer = document.querySelector(".library-container");
   libraryContainer.innerHTML = "";
 
   books.forEach((book) => {
@@ -79,7 +87,8 @@ function displayLibrary(books = myLibrary) {
     heading2.textContent = `${book.title}`;
     removeButton.textContent = `Remove`;
 
-    image.src = book.imgUrl || "https://via.placeholder.com/150x220?text=No+Cover";
+    image.src =
+      book.imgUrl || "https://via.placeholder.com/150x220?text=No+Cover";
     image.alt = book.title;
     pTag1.textContent = `Author: ${book.authorName}`;
     pTag2.textContent = `Pages: ${book.pages}`;
