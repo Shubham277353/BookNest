@@ -8,18 +8,11 @@ class Book {
     this.isRead = isRead || "Not Read";
     this.imgUrl = imgUrl;
   }
-
   toggleRead = function () {
     this.isRead = this.isRead == "Read" ? "Not Read" : "Read";
   }
 }
 
-
-class Library{
-  constructor(){
-    this.books = [];
-  }
-}
 function addBookToLibrary(title, authorName, pages, isRead, imgUrl) {
   const book = new Book(title, authorName, pages, isRead, imgUrl);
   book.id = crypto.randomUUID();
@@ -66,7 +59,7 @@ addBookToLibrary(
 );
 
 function displayLibrary(books = myLibrary) {
-  const libraryContainer = document.querySelector(".library-container");
+  let libraryContainer = document.querySelector(".library-container");
   libraryContainer.innerHTML = "";
 
   books.forEach((book) => {
